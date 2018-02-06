@@ -1,0 +1,1 @@
+# webext-manifest-webpack-plugin
