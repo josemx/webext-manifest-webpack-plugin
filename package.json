@@ -1,0 +1,9 @@
+{
+  "name": "webext-manifest-webpack-plugin",
+  "version": "0.1.0",
+  "description": "Create Web Extension manifest from package.json",
+  "main": "index.js",
+  "repository": "git@github.com:josemx/webext-manifest-webpack-plugin.git",
+  "author": "José Martínez <jxse.mx@gmail.com>",
+  "license": "MIT",
+}
