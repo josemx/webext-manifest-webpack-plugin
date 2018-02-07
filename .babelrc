@@ -1,0 +1,9 @@
+{
+  "presets": [
+    ["airbnb", {
+      "targets": {
+        "node": 4
+      }
+    }]
+  ]
+}
