@@ -16,11 +16,11 @@ const config = {
   ],
 };
 ```
+If the key `webext` is defined in `package.json` they will be included
 ## Options
 |Name|Type|Default|Description|
 |----|----|-------|-----------|
 |`template`|`string\|object`|`{}`|`string` is a path to a `json` file with additional/override keys for the manifest. An `object` can be used for the same functionality.|
-|`fromPKG`|`boolean`|`false`|Will read from `package.json` for additional/override keys. Key in `package.json` must be defined as `webext`.|
 |`target`|`string`|`''`|If defined it will use `vendors` to add specific keys to the final manifest.|
 |`vendors`|`string\|object`|`{}`|`string` is a path to a `json` file with vendor specific  keys. As with `template` an `object` can be used for the same functionality.|
 
