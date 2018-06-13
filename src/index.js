@@ -4,6 +4,7 @@ import { readFileAsync } from './utils';
 const ERRTAG = '[webext-manifest-webpack-plugin]';
 
 function WebExtManifestWebpackPlugin(options) {
+  // initialize options
   this.options = {
     template: options.template || {},
     fromPKG: options.fromPKG || false,
@@ -11,6 +12,7 @@ function WebExtManifestWebpackPlugin(options) {
     vendors: options.vendors || {},
   };
 
+  // initialize barebones manifest
   this.defaultManifest = {
     manifest_version: 2,
     name: '',
@@ -22,12 +24,15 @@ function WebExtManifestWebpackPlugin(options) {
 WebExtManifestWebpackPlugin.prototype.apply = function apply(compiler) {
   compiler.plugin('emit', (compilation, callback) => {
     // keys from packgage.json
-    const defautlKeys = readFileAsync(path.resolve('./package.json'), 'utf8')
+    const defaultKeys = readFileAsync(path.resolve('./package.json'), 'utf8')
       .then(contents => JSON.parse(contents))
       .then(obj => ({
-        name: obj.name,
-        version: obj.version,
-        author: obj.author,
+        name: obj.name || '',
+        version: obj.version || '',
+        author: obj.author || '',
+        description: obj.description || '',
+        homepage_url: obj.homepage || '',
+        ...(obj.webext || {}),
       }))
       .catch(e => console.error(`${ERRTAG} :: ${e}`));
 
@@ -40,8 +45,10 @@ WebExtManifestWebpackPlugin.prototype.apply = function apply(compiler) {
         .catch(e => console.error(`${ERRTAG} :: ${e}`));
     }
 
-    Promise.all([this.defaultManifest, defautlKeys, template])
+    Promise.all([this.defaultManifest, defaultKeys, template])
       .then(manifestObjectArray => {
+        console.log('defaultKeys', defaultKeys);
+        console.log('template', template);
         const manifestObject = manifestObjectArray.reduce(
           (acc, cur) => ({ ...acc, ...cur }),
           {}
