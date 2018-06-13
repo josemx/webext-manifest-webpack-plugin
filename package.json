@@ -17,7 +17,9 @@
   "scripts": {
     "build": "babel src -d dist",
     "fix": "eslint --fix '{src,tests}/**/*.js'",
-    "lint": "eslint '{src,tests}/**/*.js'"
+    "lint": "eslint '{src,tests}/**/*.js'",
+    "test:inline": "webpack --config tests/webpack.config.test1.babel.js",
+    "test:file": "webpack --config tests/webpack.config.test2.babel.js"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
