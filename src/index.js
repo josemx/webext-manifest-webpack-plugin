@@ -3,7 +3,7 @@ import { readFileAsync } from './utils';
 
 const ERRTAG = '[webext-manifest-webpack-plugin]';
 
-function WebExtManifestWebpackPlugin(options) {
+function WebExtManifestWebpackPlugin(options = {}) {
   // initialize options
   this.options = {
     template: options.template || {},

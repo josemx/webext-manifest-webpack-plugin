@@ -1,7 +1,8 @@
-describe('index', () => {
+import WebExtManifestWebpackPlugin from '../src';
 
-  it('should', () => {
-    
+describe('webext manifest webpack plugin', () => {
+  it('should create a new instance', () => {
+    const plugin = new WebExtManifestWebpackPlugin();
+    expect(plugin).toBeInstanceOf(WebExtManifestWebpackPlugin);
   });
-
 });
