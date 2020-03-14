@@ -1808,7 +1808,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ajv@npm:^6.1.0, ajv@npm:^6.10.0, ajv@npm:^6.10.2, ajv@npm:^6.5.5":
+"ajv@npm:^6.1.0, ajv@npm:^6.10.0, ajv@npm:^6.10.2, ajv@npm:^6.12.0, ajv@npm:^6.5.5":
   version: 6.12.0
   resolution: "ajv@npm:6.12.0"
   dependencies:
@@ -8211,6 +8211,16 @@ resolve@1.1.7:
   languageName: node
   linkType: hard
 
+"schema-utils@npm:^2.6.5":
+  version: 2.6.5
+  resolution: "schema-utils@npm:2.6.5"
+  dependencies:
+    ajv: ^6.12.0
+    ajv-keywords: ^3.4.1
+  checksum: 2/f41503bd6025c4ec77b7eacf98bf39799b9240e51e1f16881e71a90a9a39208f6d1489719acc59ae1b47aedcbcc8c66ceb09f23603e09ca6889c2521b2d9078f
+  languageName: node
+  linkType: hard
+
 "semver-compare@npm:^1.0.0":
   version: 1.0.0
   resolution: "semver-compare@npm:1.0.0"
@@ -9529,6 +9539,7 @@ resolve@1.1.7:
     jest: ^25.1.0
     lint-staged: ">=10"
     prettier: ^1.19.1
+    schema-utils: ^2.6.5
     webpack: ^4.42.0
     webpack-cli: ^3.3.11
   languageName: unknown

@@ -69,6 +69,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         ['jest', 'npm:25.1.0'],
         ['lint-staged', 'npm:10.0.8'],
         ['prettier', 'npm:1.19.1'],
+        ['schema-utils', 'npm:2.6.5'],
         ['webpack', 'npm:4.42.0'],
         [
           'webpack-cli',
@@ -121,6 +122,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
                   ['jest', 'npm:25.1.0'],
                   ['lint-staged', 'npm:10.0.8'],
                   ['prettier', 'npm:1.19.1'],
+                  ['schema-utils', 'npm:2.6.5'],
                   ['webpack', 'npm:4.42.0'],
                   [
                     'webpack-cli',
@@ -3551,14 +3553,14 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           'ajv-keywords',
           [
             [
-              'virtual:2b49db17d1e4e8854e6e7543c07eb7bc19ec9da65a1b99b9cb28e764846d419e5ecd6e057ad65249f2b928862ffd70dbf8a7c79643ccdd7c1c40cab5b59aa03f#npm:3.4.1',
+              'virtual:27bd4947905fb7797b7cb8628dcaea3e4042312f932717b8b8a99c442a64293032dc88cdbf8683497804357050026f557bb51805406830b1f10b9c123c26de39#npm:3.4.1',
               {
                 packageLocation:
-                  './.yarn/$$virtual/ajv-keywords-virtual-89a6979aa1/0/cache/ajv-keywords-npm-3.4.1-851fd088de-2.zip/node_modules/ajv-keywords/',
+                  './.yarn/$$virtual/ajv-keywords-virtual-24fab97e0b/0/cache/ajv-keywords-npm-3.4.1-851fd088de-2.zip/node_modules/ajv-keywords/',
                 packageDependencies: [
                   [
                     'ajv-keywords',
-                    'virtual:2b49db17d1e4e8854e6e7543c07eb7bc19ec9da65a1b99b9cb28e764846d419e5ecd6e057ad65249f2b928862ffd70dbf8a7c79643ccdd7c1c40cab5b59aa03f#npm:3.4.1',
+                    'virtual:27bd4947905fb7797b7cb8628dcaea3e4042312f932717b8b8a99c442a64293032dc88cdbf8683497804357050026f557bb51805406830b1f10b9c123c26de39#npm:3.4.1',
                   ],
                   ['ajv', 'npm:6.12.0'],
                 ],
@@ -14395,7 +14397,23 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
                   ],
                   [
                     'ajv-keywords',
-                    'virtual:2b49db17d1e4e8854e6e7543c07eb7bc19ec9da65a1b99b9cb28e764846d419e5ecd6e057ad65249f2b928862ffd70dbf8a7c79643ccdd7c1c40cab5b59aa03f#npm:3.4.1',
+                    'virtual:27bd4947905fb7797b7cb8628dcaea3e4042312f932717b8b8a99c442a64293032dc88cdbf8683497804357050026f557bb51805406830b1f10b9c123c26de39#npm:3.4.1',
+                  ],
+                ],
+                linkType: 'HARD',
+              },
+            ],
+            [
+              'npm:2.6.5',
+              {
+                packageLocation:
+                  './.yarn/cache/schema-utils-npm-2.6.5-27bd494790-2.zip/node_modules/schema-utils/',
+                packageDependencies: [
+                  ['schema-utils', 'npm:2.6.5'],
+                  ['ajv', 'npm:6.12.0'],
+                  [
+                    'ajv-keywords',
+                    'virtual:27bd4947905fb7797b7cb8628dcaea3e4042312f932717b8b8a99c442a64293032dc88cdbf8683497804357050026f557bb51805406830b1f10b9c123c26de39#npm:3.4.1',
                   ],
                 ],
                 linkType: 'HARD',
@@ -16661,6 +16679,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
                   ['jest', 'npm:25.1.0'],
                   ['lint-staged', 'npm:10.0.8'],
                   ['prettier', 'npm:1.19.1'],
+                  ['schema-utils', 'npm:2.6.5'],
                   ['webpack', 'npm:4.42.0'],
                   [
                     'webpack-cli',
@@ -16704,7 +16723,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
                   ['ajv', 'npm:6.12.0'],
                   [
                     'ajv-keywords',
-                    'virtual:2b49db17d1e4e8854e6e7543c07eb7bc19ec9da65a1b99b9cb28e764846d419e5ecd6e057ad65249f2b928862ffd70dbf8a7c79643ccdd7c1c40cab5b59aa03f#npm:3.4.1',
+                    'virtual:27bd4947905fb7797b7cb8628dcaea3e4042312f932717b8b8a99c442a64293032dc88cdbf8683497804357050026f557bb51805406830b1f10b9c123c26de39#npm:3.4.1',
                   ],
                   ['chrome-trace-event', 'npm:1.0.2'],
                   ['enhanced-resolve', 'npm:4.1.1'],
