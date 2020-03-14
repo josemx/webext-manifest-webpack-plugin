@@ -1,0 +1,27 @@
+{
+  "type": "object",
+  "properties": {
+    "template": {
+      "oneOf": [{
+          "type": "string"
+        },
+        {
+          "type": "object"
+        }
+      ]
+    },
+    "test": {
+      "type": "string"
+    },
+    "vendors": {
+      "oneOf": [{
+          "type": "string"
+        },
+        {
+          "type": "object"
+        }
+      ]
+    }
+  },
+  "additionalProperties": false
+}
