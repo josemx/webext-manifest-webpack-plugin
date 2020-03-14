@@ -1090,6 +1090,21 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@babel/register@npm:^7.8.6":
+  version: 7.8.6
+  resolution: "@babel/register@npm:7.8.6"
+  dependencies:
+    find-cache-dir: ^2.0.0
+    lodash: ^4.17.13
+    make-dir: ^2.1.0
+    pirates: ^4.0.0
+    source-map-support: ^0.5.16
+  peerDependencies:
+    "@babel/core": ^7.0.0-0
+  checksum: 2/d562dc835a25fe686cd1031f8be0c7d134efb6e0d377c289db8c4f4643f2a150943acdaa9ef03a49f92f81b2657fd99cf6b1739720d1f95d93ce170464ec7897
+  languageName: node
+  linkType: hard
+
 "@babel/runtime@npm:^7.8.4, @babel/runtime@npm:^7.8.7":
   version: 7.8.7
   resolution: "@babel/runtime@npm:7.8.7"
@@ -4068,7 +4083,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"find-cache-dir@npm:^2.1.0":
+"find-cache-dir@npm:^2.0.0, find-cache-dir@npm:^2.1.0":
   version: 2.1.0
   resolution: "find-cache-dir@npm:2.1.0"
   dependencies:
@@ -7374,7 +7389,7 @@ fsevents@^2.1.2:
   languageName: node
   linkType: hard
 
-"pirates@npm:^4.0.1":
+"pirates@npm:^4.0.0, pirates@npm:^4.0.1":
   version: 4.0.1
   resolution: "pirates@npm:4.0.1"
   dependencies:
@@ -8475,7 +8490,7 @@ resolve@1.1.7:
   languageName: node
   linkType: hard
 
-"source-map-support@npm:^0.5.6, source-map-support@npm:~0.5.12":
+"source-map-support@npm:^0.5.16, source-map-support@npm:^0.5.6, source-map-support@npm:~0.5.12":
   version: 0.5.16
   resolution: "source-map-support@npm:0.5.16"
   dependencies:
@@ -9526,6 +9541,7 @@ resolve@1.1.7:
   dependencies:
     "@babel/cli": ^7.8.4
     "@babel/core": ^7.8.7
+    "@babel/register": ^7.8.6
     "@babel/runtime": ^7.8.7
     "@yarnpkg/pnpify": ^2.0.0-rc.19
     babel-preset-airbnb: ^4.4.0
