@@ -1,9 +1,12 @@
 import { resolve } from 'path';
-import { promises } from 'fs';
-
-const { readFile } = promises;
+import { promises as fsPromises } from 'fs';
 
 const ERRTAG = '[webext-manifest-webpack-plugin]';
+
+const readJSON = path =>
+  fsPromises
+    .readFile(resolve(path), 'utf8')
+    .then(contents => JSON.parse(contents));
 
 function WebExtManifestWebpackPlugin(options = {}) {
   // initialize options
@@ -26,8 +29,7 @@ function WebExtManifestWebpackPlugin(options = {}) {
 WebExtManifestWebpackPlugin.prototype.apply = function apply(compiler) {
   compiler.plugin('emit', (compilation, callback) => {
     // keys from packgage.json
-    const defaultKeys = readFile(resolve('./package.json'), 'utf8')
-      .then(contents => JSON.parse(contents))
+    const defaultKeys = readJSON('./package.json')
       .then(obj => ({
         name: obj.name || '',
         version: obj.version || '',
@@ -42,9 +44,9 @@ WebExtManifestWebpackPlugin.prototype.apply = function apply(compiler) {
     let { template } = this.options;
     if (typeof template === 'string') {
       // if the template is a string read the files contents and reassign
-      template = readFile(resolve(template), 'utf8')
-        .then(contents => JSON.parse(contents))
-        .catch(e => console.error(`${ERRTAG} :: ${e}`));
+      template = readJSON(template).catch(e =>
+        console.error(`${ERRTAG} :: ${e}`)
+      );
     }
 
     Promise.all([this.defaultManifest, defaultKeys, template])
