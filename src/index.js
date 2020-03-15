@@ -8,60 +8,69 @@ const readJSON = path =>
     .readFile(resolve(path), 'utf8')
     .then(contents => JSON.parse(contents));
 
-function WebExtManifestWebpackPlugin(options = {}) {
-  // initialize options
-  this.options = {
-    template: options.template || {},
-    fromPKG: options.fromPKG || false,
-    target: options.target || '',
-    vendors: options.vendors || {},
-  };
+const defaultOptions = () => ({
+  template: {},
+  fromPKG: false,
+  target: '',
+  vendors: {},
+});
 
-  // initialize barebones manifest
-  this.defaultManifest = {
-    manifest_version: 2,
-    name: '',
-    version: '',
-    author: '',
-  };
-}
+const defaultManifest = () => ({
+  manifest_version: 2,
+  name: '',
+  author: '',
+});
 
-WebExtManifestWebpackPlugin.prototype.apply = function apply(compiler) {
-  compiler.plugin('emit', (compilation, callback) => {
-    // keys from packgage.json
-    const defaultKeys = readJSON('./package.json')
-      .then(obj => ({
-        name: obj.name || '',
-        version: obj.version || '',
-        author: obj.author || '',
-        description: obj.description || '',
-        homepage_url: obj.homepage || '',
-        ...(obj.webext || {}),
-      }))
-      .catch(e => console.error(`${ERRTAG} :: ${e}`));
+const pluginCallback = self => (compilation, callback) => {
+  // keys from packgage.json
+  const defaultKeys = readJSON('./package.json')
+    .then(obj => ({
+      name: obj.name || '',
+      version: obj.version || '',
+      author: obj.author || '',
+      description: obj.description || '',
+      homepage_url: obj.homepage || '',
+      ...(obj.webext || {}),
+    }))
+    .catch(e => console.error(`${ERRTAG} :: ${e}`));
 
-    // keys from template
-    let { template } = this.options;
-    if (typeof template === 'string') {
-      // if the template is a string read the files contents and reassign
-      template = readJSON(template).catch(e =>
-        console.error(`${ERRTAG} :: ${e}`)
+  // keys from template
+  let { template } = self.options;
+  if (typeof template === 'string') {
+    // if the template is a string read the files contents and reassign
+    template = readJSON(template).catch(e =>
+      console.error(`${ERRTAG} :: ${e}`)
+    );
+  }
+
+  Promise.all([self.defaultManifest, defaultKeys, template])
+    .then(manifestObjectArray => {
+      console.log('defaultKeys', defaultKeys);
+      console.log('template', template);
+      const manifestObject = manifestObjectArray.reduce(
+        (acc, cur) => ({
+          ...acc,
+          ...cur,
+        }),
+        {}
       );
-    }
-
-    Promise.all([this.defaultManifest, defaultKeys, template])
-      .then(manifestObjectArray => {
-        console.log('defaultKeys', defaultKeys);
-        console.log('template', template);
-        const manifestObject = manifestObjectArray.reduce(
-          (acc, cur) => ({ ...acc, ...cur }),
-          {}
-        );
-        console.log('manifestObject', manifestObject);
-        callback();
-      })
-      .catch(e => console.error(`${ERRTAG} :: ${e}`));
-  });
+      console.log('manifestObject', manifestObject);
+      callback();
+    })
+    .catch(e => console.error(`${ERRTAG} :: ${e}`));
 };
+
+const apply = (self, callback) => compiler =>
+  compiler.plugin('emit', callback(self));
+
+const WebExtManifestWebpackPlugin = () => ({
+  apply: apply(
+    {
+      options: defaultOptions(),
+      defaultManifest: defaultManifest(),
+    },
+    pluginCallback
+  ),
+});
 
 export default WebExtManifestWebpackPlugin;
