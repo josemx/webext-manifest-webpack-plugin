@@ -1,6 +1,8 @@
 import { resolve } from 'path';
 import { promises as fsPromises } from 'fs';
 
+import pluginDefaults from './defaults';
+
 const ERRTAG = '[webext-manifest-webpack-plugin]';
 
 const readJSON = path =>
@@ -8,20 +10,7 @@ const readJSON = path =>
     .readFile(resolve(path), 'utf8')
     .then(contents => JSON.parse(contents));
 
-const defaultOptions = () => ({
-  template: {},
-  fromPKG: false,
-  target: '',
-  vendors: {},
-});
-
-const defaultManifest = () => ({
-  manifest_version: 2,
-  name: '',
-  author: '',
-});
-
-const pluginCallback = self => (compilation, callback) => {
+const pluginCallback = defaults => (compilation, callback) => {
   // keys from packgage.json
   const defaultKeys = readJSON('./package.json')
     .then(obj => ({
@@ -35,7 +24,7 @@ const pluginCallback = self => (compilation, callback) => {
     .catch(e => console.error(`${ERRTAG} :: ${e}`));
 
   // keys from template
-  let { template } = self.options;
+  let { template } = defaults.options;
   if (typeof template === 'string') {
     // if the template is a string read the files contents and reassign
     template = readJSON(template).catch(e =>
@@ -43,7 +32,7 @@ const pluginCallback = self => (compilation, callback) => {
     );
   }
 
-  Promise.all([self.defaultManifest, defaultKeys, template])
+  Promise.all([defaults.manifest, defaultKeys, template])
     .then(manifestObjectArray => {
       console.log('defaultKeys', defaultKeys);
       console.log('template', template);
@@ -60,17 +49,11 @@ const pluginCallback = self => (compilation, callback) => {
     .catch(e => console.error(`${ERRTAG} :: ${e}`));
 };
 
-const apply = (self, callback) => compiler =>
-  compiler.plugin('emit', callback(self));
+const apply = (defaults, callback) => compiler =>
+  compiler.plugin('emit', callback(defaults));
 
 const WebExtManifestWebpackPlugin = () => ({
-  apply: apply(
-    {
-      options: defaultOptions(),
-      defaultManifest: defaultManifest(),
-    },
-    pluginCallback
-  ),
+  apply: apply(pluginDefaults, pluginCallback),
 });
 
 export default WebExtManifestWebpackPlugin;
