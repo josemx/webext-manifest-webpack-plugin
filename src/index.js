@@ -1,5 +1,7 @@
-import path from 'path';
-import { readFileAsync } from './utils';
+import { resolve } from 'path';
+import { promises } from 'fs';
+
+const { readFile } = promises;
 
 const ERRTAG = '[webext-manifest-webpack-plugin]';
 
@@ -24,7 +26,7 @@ function WebExtManifestWebpackPlugin(options = {}) {
 WebExtManifestWebpackPlugin.prototype.apply = function apply(compiler) {
   compiler.plugin('emit', (compilation, callback) => {
     // keys from packgage.json
-    const defaultKeys = readFileAsync(path.resolve('./package.json'), 'utf8')
+    const defaultKeys = readFile(resolve('./package.json'), 'utf8')
       .then(contents => JSON.parse(contents))
       .then(obj => ({
         name: obj.name || '',
@@ -40,7 +42,7 @@ WebExtManifestWebpackPlugin.prototype.apply = function apply(compiler) {
     let { template } = this.options;
     if (typeof template === 'string') {
       // if the template is a string read the files contents and reassign
-      template = readFileAsync(path.resolve(template), 'utf8')
+      template = readFile(resolve(template), 'utf8')
         .then(contents => JSON.parse(contents))
         .catch(e => console.error(`${ERRTAG} :: ${e}`));
     }
