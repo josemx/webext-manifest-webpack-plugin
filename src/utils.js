@@ -1,11 +1,13 @@
-import fs from 'fs';
+import { resolve } from 'path';
+import { promises as fsPromises } from 'fs';
 
-const readFileAsync = (path, options) =>
-  new Promise((resolve, reject) => {
-    fs.readFile(path, options, (err, data) => {
-      if (err) reject(err);
-      resolve(data);
-    });
-  });
+const readJSON = path =>
+  fsPromises
+    .readFile(resolve(path), 'utf8')
+    .then(contents => JSON.parse(contents));
 
-export { readFileAsync }; /* eslint "import/prefer-default-export": "off" */
+const merge = objArray =>
+  objArray.reduce((acc, obj) => ({ ...acc, ...obj }), {});
+
+export { readJSON };
+export { merge };

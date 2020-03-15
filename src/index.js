@@ -1,52 +1,40 @@
-import { resolve } from 'path';
-import { promises as fsPromises } from 'fs';
-
+import { readJSON, merge } from './utils';
 import pluginDefaults from './defaults';
 
-const ERRTAG = '[webext-manifest-webpack-plugin]';
+const logPluginError = e =>
+  console.error('[webext-manifest-webpack-plugin]', e);
 
-const readJSON = path =>
-  fsPromises
-    .readFile(resolve(path), 'utf8')
-    .then(contents => JSON.parse(contents));
+const getPackageKeys = pkg => ({
+  name: pkg.name || '',
+  version: pkg.version || '',
+  author: pkg.author || '',
+  description: pkg.description || '',
+  homepage_url: pkg.homepage || '',
+  ...(pkg.webext || {}),
+});
 
 const pluginCallback = defaults => (compilation, callback) => {
   // keys from packgage.json
-  const defaultKeys = readJSON('./package.json')
-    .then(obj => ({
-      name: obj.name || '',
-      version: obj.version || '',
-      author: obj.author || '',
-      description: obj.description || '',
-      homepage_url: obj.homepage || '',
-      ...(obj.webext || {}),
-    }))
-    .catch(e => console.error(`${ERRTAG} :: ${e}`));
+  const keys = readJSON('./package.json')
+    .then(getPackageKeys)
+    .catch(logPluginError);
 
   // keys from template
-  let { template } = defaults.options;
-  if (typeof template === 'string') {
-    // if the template is a string read the files contents and reassign
-    template = readJSON(template).catch(e =>
-      console.error(`${ERRTAG} :: ${e}`)
-    );
-  }
+  const template =
+    typeof defaults.options !== 'string'
+      ? defaults.options
+      : readJSON(defaults.options).catch(logPluginError);
 
-  Promise.all([defaults.manifest, defaultKeys, template])
+  Promise.all([defaults.manifest, keys, template])
     .then(manifestObjectArray => {
-      console.log('defaultKeys', defaultKeys);
+      console.log('defaults.manifest', defaults.manifest);
+      console.log('keys', keys);
       console.log('template', template);
-      const manifestObject = manifestObjectArray.reduce(
-        (acc, cur) => ({
-          ...acc,
-          ...cur,
-        }),
-        {}
-      );
+      const manifestObject = merge(manifestObjectArray);
       console.log('manifestObject', manifestObject);
       callback();
     })
-    .catch(e => console.error(`${ERRTAG} :: ${e}`));
+    .catch(logPluginError);
 };
 
 const apply = (defaults, callback) => compiler =>
