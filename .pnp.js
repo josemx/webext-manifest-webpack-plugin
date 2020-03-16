@@ -79,6 +79,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           'webpack-cli',
           'virtual:5f083906d4dafb50f6bc545e7b82209033176b2b6e0dac174a101405a9992af59e1e6562ca2dd58f5ace340c0bb1b0c9d6c0742a2a53222aa4e3ca327f03d2a8#npm:3.3.11',
         ],
+        ['webpack-log', 'npm:3.0.1'],
       ],
       locationBlacklistData: [],
       packageRegistryData: [
@@ -136,6 +137,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
                     'webpack-cli',
                     'virtual:5f083906d4dafb50f6bc545e7b82209033176b2b6e0dac174a101405a9992af59e1e6562ca2dd58f5ace340c0bb1b0c9d6c0742a2a53222aa4e3ca327f03d2a8#npm:3.3.11',
                   ],
+                  ['webpack-log', 'npm:3.0.1'],
                 ],
                 linkType: 'SOFT',
               },
@@ -11161,6 +11163,20 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           ],
         ],
         [
+          'loglevelnext',
+          [
+            [
+              'npm:3.0.1',
+              {
+                packageLocation:
+                  './.yarn/cache/loglevelnext-npm-3.0.1-ac41ab6dc2-2.zip/node_modules/loglevelnext/',
+                packageDependencies: [['loglevelnext', 'npm:3.0.1']],
+                linkType: 'HARD',
+              },
+            ],
+          ],
+        ],
+        [
           'lolex',
           [
             [
@@ -11774,6 +11790,20 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
                   ['nan', 'npm:2.14.0'],
                   ['node-gyp', 'npm:6.1.0'],
                 ],
+                linkType: 'HARD',
+              },
+            ],
+          ],
+        ],
+        [
+          'nanoid',
+          [
+            [
+              'npm:2.1.11',
+              {
+                packageLocation:
+                  './.yarn/cache/nanoid-npm-2.1.11-60ba7b48b5-2.zip/node_modules/nanoid/',
+                packageDependencies: [['nanoid', 'npm:2.1.11']],
                 linkType: 'HARD',
               },
             ],
@@ -16723,6 +16753,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
                     'webpack-cli',
                     'virtual:5f083906d4dafb50f6bc545e7b82209033176b2b6e0dac174a101405a9992af59e1e6562ca2dd58f5ace340c0bb1b0c9d6c0742a2a53222aa4e3ca327f03d2a8#npm:3.3.11',
                   ],
+                  ['webpack-log', 'npm:3.0.1'],
                 ],
                 linkType: 'SOFT',
               },
@@ -16815,6 +16846,25 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
                   ['yargs', 'npm:13.2.4'],
                 ],
                 packagePeers: ['webpack'],
+                linkType: 'HARD',
+              },
+            ],
+          ],
+        ],
+        [
+          'webpack-log',
+          [
+            [
+              'npm:3.0.1',
+              {
+                packageLocation:
+                  './.yarn/cache/webpack-log-npm-3.0.1-812235930b-2.zip/node_modules/webpack-log/',
+                packageDependencies: [
+                  ['webpack-log', 'npm:3.0.1'],
+                  ['chalk', 'npm:2.4.2'],
+                  ['loglevelnext', 'npm:3.0.1'],
+                  ['nanoid', 'npm:2.1.11'],
+                ],
                 linkType: 'HARD',
               },
             ],
