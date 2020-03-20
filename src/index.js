@@ -21,17 +21,14 @@ const pluginCallback = defaults => (compilation, callback) => {
 
   // keys from template
   const template =
-    typeof defaults.options !== 'string'
+    typeof defaults.options.template !== 'string'
       ? defaults.options
-      : readJSON(defaults.options).catch(logPluginError);
+      : readJSON(defaults.options.template).catch(logPluginError);
 
   Promise.all([defaults.manifest, keys, template])
     .then(manifestObjectArray => {
-      console.log('defaults.manifest', defaults.manifest);
-      console.log('keys', keys);
-      console.log('template', template);
       const manifestObject = merge(manifestObjectArray);
-      console.log('manifestObject', manifestObject);
+      console.log(manifestObject);
       callback();
     })
     .catch(logPluginError);
