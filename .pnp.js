@@ -73,6 +73,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         ['jest', 'npm:25.1.0'],
         ['lint-staged', 'npm:10.0.8'],
         ['prettier', 'npm:1.19.1'],
+        ['ramda', 'npm:0.27.0'],
         ['schema-utils', 'npm:2.6.5'],
         ['webpack', 'npm:4.42.0'],
         [
@@ -130,6 +131,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
                   ['jest', 'npm:25.1.0'],
                   ['lint-staged', 'npm:10.0.8'],
                   ['prettier', 'npm:1.19.1'],
+                  ['ramda', 'npm:0.27.0'],
                   ['schema-utils', 'npm:2.6.5'],
                   ['webpack', 'npm:4.42.0'],
                   [
@@ -13490,6 +13492,20 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           ],
         ],
         [
+          'ramda',
+          [
+            [
+              'npm:0.27.0',
+              {
+                packageLocation:
+                  './.yarn/cache/ramda-npm-0.27.0-0ac931b47f-2.zip/node_modules/ramda/',
+                packageDependencies: [['ramda', 'npm:0.27.0']],
+                linkType: 'HARD',
+              },
+            ],
+          ],
+        ],
+        [
           'randombytes',
           [
             [
@@ -16717,6 +16733,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
                   ['jest', 'npm:25.1.0'],
                   ['lint-staged', 'npm:10.0.8'],
                   ['prettier', 'npm:1.19.1'],
+                  ['ramda', 'npm:0.27.0'],
                   ['schema-utils', 'npm:2.6.5'],
                   ['webpack', 'npm:4.42.0'],
                   [
