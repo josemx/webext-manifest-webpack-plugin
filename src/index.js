@@ -1,11 +1,13 @@
-import { readJSON, writeJSON, merge, extract } from './utils';
-import * as pluginDefaults from './defaults';
+import pluginDefaults from './defaults';
+import { PLUGIN_NAME, KEYMAP } from './constants';
+import { readJSON, writeJSON, merge, extract, validateOptions } from './utils';
 
-const pluginCallback = defaults => (compilation, callback) => {
+const pluginCallback = (defaults, options) => (compilation, callback) => {
+  // validate options
+  validateOptions(options);
+
   // keys from packgage.json
-  const keys = readJSON('./package.json').then(pkg =>
-    extract(defaults.keyMap, pkg)
-  );
+  const keys = readJSON('./package.json').then(pkg => extract(KEYMAP, pkg));
 
   // keys from template
   const template =
@@ -22,14 +24,11 @@ const pluginCallback = defaults => (compilation, callback) => {
     .then(() => callback());
 };
 
-const pluginApply = (defaults, callback) => compiler =>
-  compiler.hooks.afterEmit.tapAsync(
-    'webext-manifest-plugin',
-    callback(defaults)
-  );
+const pluginApply = (defaults, options, callback) => compiler =>
+  compiler.hooks.afterEmit.tapAsync(PLUGIN_NAME, callback(defaults, options));
 
-const WebExtManifestWebpackPlugin = () => ({
-  apply: pluginApply(pluginDefaults, pluginCallback),
+const WebExtManifestWebpackPlugin = (options = {}) => ({
+  apply: pluginApply(pluginDefaults, options, pluginCallback),
 });
 
 export default WebExtManifestWebpackPlugin;

@@ -1,8 +1,12 @@
 import { resolve } from 'path';
+import validate from 'schema-utils';
 import { promises as fsPromises } from 'fs';
 
+import schema from './schema.json';
+import { SCHEMA_CONFIG, PLUGIN_NAME } from './constants';
+
 export const throwPluginError = e => {
-  throw new Error(`[webext-manifest-webpack-plugin] ${e}`);
+  throw new Error(`[${PLUGIN_NAME}] ${e}`);
 };
 
 export const readJSON = path =>
@@ -26,4 +30,12 @@ export const extract = (keyMap, obj) => {
     return { ...acc, [nKey]: obj[mKey] || '' };
   }, {});
   return obj.webext ? { ...pkgKeys, ...obj.webext } : pkgKeys;
+};
+
+export const validateOptions = options => {
+  try {
+    validate(schema, options, SCHEMA_CONFIG);
+  } catch (e) {
+    throwPluginError(e);
+  }
 };
