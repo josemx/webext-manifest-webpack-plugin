@@ -1,34 +1,32 @@
-import { readJSON, merge } from './utils';
-import pluginDefaults from './defaults';
-
-const getPackageKeys = pkg => ({
-  name: pkg.name || '',
-  version: pkg.version || '',
-  author: pkg.author || '',
-  description: pkg.description || '',
-  homepage_url: pkg.homepage || '',
-  ...(pkg.webext || {}),
-});
+import { readJSON, writeJSON, merge, extract } from './utils';
+import * as pluginDefaults from './defaults';
 
 const pluginCallback = defaults => (compilation, callback) => {
   // keys from packgage.json
-  const keys = readJSON('./package.json').then(getPackageKeys);
+  const keys = readJSON('./package.json').then(pkg =>
+    extract(defaults.keyMap, pkg)
+  );
 
   // keys from template
   const template =
     typeof defaults.options.template !== 'string'
-      ? defaults.options
+      ? defaults.options.template
       : readJSON(defaults.options.template);
 
-  Promise.all([defaults.manifest, keys, template]).then(manifestObjectArray => {
-    const manifestObject = merge(manifestObjectArray);
-    console.log(manifestObject);
-    callback();
-  });
+  Promise.all([defaults.manifest, keys, template])
+    .then(manifestObjectArray => {
+      const manifestObject = merge(manifestObjectArray);
+      console.log(manifestObject);
+      return writeJSON(`${__dirname}/../test.json`, manifestObject);
+    })
+    .then(() => callback());
 };
 
 const pluginApply = (defaults, callback) => compiler =>
-  compiler.plugin('emit', callback(defaults));
+  compiler.hooks.afterEmit.tapAsync(
+    'webext-manifest-plugin',
+    callback(defaults)
+  );
 
 const WebExtManifestWebpackPlugin = () => ({
   apply: pluginApply(pluginDefaults, pluginCallback),

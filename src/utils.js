@@ -11,6 +11,11 @@ export const readJSON = path =>
     .then(contents => JSON.parse(contents))
     .catch(throwPluginError);
 
+export const writeJSON = (path, obj) =>
+  fsPromises
+    .writeFile(resolve(path), JSON.stringify(obj, null, 2), 'utf8')
+    .catch(throwPluginError);
+
 export const merge = objArray =>
   objArray.reduce((acc, obj) => ({ ...acc, ...obj }), {});
 
