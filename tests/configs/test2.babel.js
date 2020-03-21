@@ -10,7 +10,6 @@ const config = {
   },
   plugins: [
     new WebExtManifestWebpackPlugin({
-      fromPKG: true,
       template: './tests/template.json',
     }),
   ],

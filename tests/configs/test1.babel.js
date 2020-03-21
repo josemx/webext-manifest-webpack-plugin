@@ -12,7 +12,6 @@ const config = {
   },
   plugins: [
     new WebExtManifestWebpackPlugin({
-      fromPKG: true,
       template: {
         manifest_version: 2,
         author: 'Test Tester',

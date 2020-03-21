@@ -1,6 +1,5 @@
 export const options = {
   template: {},
-  fromPKG: false,
   target: '',
   vendors: {},
 };
