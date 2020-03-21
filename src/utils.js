@@ -13,3 +13,12 @@ export const readJSON = path =>
 
 export const merge = objArray =>
   objArray.reduce((acc, obj) => ({ ...acc, ...obj }), {});
+
+export const extract = (keyMap, obj) => {
+  const pkgKeys = keyMap.reduce((acc, key) => {
+    if (typeof key === 'string') return { ...acc, [key]: obj[key] || '' };
+    const [nKey, mKey] = key;
+    return { ...acc, [nKey]: obj[mKey] || '' };
+  }, {});
+  return obj.webext ? { ...pkgKeys, ...obj.webext } : pkgKeys;
+};
