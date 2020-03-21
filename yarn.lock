@@ -7644,13 +7644,6 @@ fsevents@^2.1.2:
   languageName: node
   linkType: hard
 
-"ramda@npm:^0.27.0":
-  version: 0.27.0
-  resolution: "ramda@npm:0.27.0"
-  checksum: 2/27b2346803bb30acdde0afa25a364c99280a7fbf480ad959cfb5237371d0dd4719c7fb5052b2cbae4c92790c90ee9086e6cbb677500f3f8b4c338144cb71ecce
-  languageName: node
-  linkType: hard
-
 "randombytes@npm:^2.0.0, randombytes@npm:^2.0.1, randombytes@npm:^2.0.5":
   version: 2.0.6
   resolution: "randombytes@npm:2.0.6"
@@ -9562,7 +9555,6 @@ resolve@1.1.7:
     jest: ^25.1.0
     lint-staged: ">=10"
     prettier: ^1.19.1
-    ramda: ^0.27.0
     schema-utils: ^2.6.5
     webpack: ^4.42.0
     webpack-cli: ^3.3.11
