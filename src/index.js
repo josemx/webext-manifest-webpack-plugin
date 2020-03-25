@@ -1,5 +1,5 @@
 import pluginDefaults from './defaults';
-import { PLUGIN_NAME, KEYMAP } from './constants';
+import { PLUGIN_NAME, KEYMAP, MANIFEST_FILE } from './constants';
 import { readJSON, writeJSON, merge, extract, validateOptions } from './utils';
 
 const pluginCallback = (defaults, options) => (compilation, callback) => {
@@ -18,8 +18,9 @@ const pluginCallback = (defaults, options) => (compilation, callback) => {
   Promise.all([defaults.manifest, keys, template])
     .then(manifestObjectArray => {
       const manifestObject = merge(manifestObjectArray);
-      const outputPath = options.output || compilation.options.output.path;
-      return writeJSON(`${outputPath}/test.json`, manifestObject);
+      const { outputPath = compilation.options.output.path } = options;
+      const { filename = MANIFEST_FILE } = options;
+      return writeJSON(`${outputPath}/${filename}`, manifestObject);
     })
     .then(() => callback());
 };

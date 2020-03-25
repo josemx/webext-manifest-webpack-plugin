@@ -12,3 +12,5 @@ export const SCHEMA_CONFIG = {
 };
 
 export const PLUGIN_NAME = 'webext-manifest-webpack-plugin';
+
+export const MANIFEST_FILE = 'manifest.json';
