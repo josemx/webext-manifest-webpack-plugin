@@ -12,7 +12,8 @@
       ]
     },
     "target": {
-      "type": "string"
+      "type": "string",
+      "enum": ["firefox", "chrome"]
     },
     "vendors": {
       "oneOf": [
