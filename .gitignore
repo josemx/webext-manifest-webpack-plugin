@@ -61,6 +61,8 @@ typings/
 tests/out.js
 dist/
 .DS_Store
+test.json
+manifest.json
 
 # yarn2
 .yarn/*

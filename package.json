@@ -17,11 +17,17 @@
   "scripts": {
     "build": "babel src -d dist",
     "lint": "eslint '{src,tests}/**/*.js'",
-    "test": "jest"
+    "test": "jest",
+    "test:config:one": "webpack --config tests/configs/one.babel.js",
+    "test:config:two": "webpack --config tests/configs/two.babel.js"
+  },
+  "dependencies": {
+    "schema-utils": "^2.6.5"
   },
   "devDependencies": {
     "@babel/cli": "^7.8.4",
     "@babel/core": "^7.8.7",
+    "@babel/register": "^7.8.6",
     "@babel/runtime": "^7.8.7",
     "@yarnpkg/pnpify": "^2.0.0-rc.19",
     "babel-preset-airbnb": "^4.4.0",
@@ -35,7 +41,6 @@
     "jest": "^25.1.0",
     "lint-staged": ">=10",
     "prettier": "^1.19.1",
-    "schema-utils": "^2.6.5",
     "webpack": "^4.42.0",
     "webpack-cli": "^3.3.11"
   },

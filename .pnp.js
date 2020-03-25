@@ -38,6 +38,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           'virtual:5f083906d4dafb50f6bc545e7b82209033176b2b6e0dac174a101405a9992af59e1e6562ca2dd58f5ace340c0bb1b0c9d6c0742a2a53222aa4e3ca327f03d2a8#npm:7.8.4',
         ],
         ['@babel/core', 'npm:7.8.7'],
+        [
+          '@babel/register',
+          'virtual:5f083906d4dafb50f6bc545e7b82209033176b2b6e0dac174a101405a9992af59e1e6562ca2dd58f5ace340c0bb1b0c9d6c0742a2a53222aa4e3ca327f03d2a8#npm:7.8.6',
+        ],
         ['@babel/runtime', 'npm:7.8.7'],
         [
           '@yarnpkg/pnpify',
@@ -91,6 +95,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
                     'virtual:5f083906d4dafb50f6bc545e7b82209033176b2b6e0dac174a101405a9992af59e1e6562ca2dd58f5ace340c0bb1b0c9d6c0742a2a53222aa4e3ca327f03d2a8#npm:7.8.4',
                   ],
                   ['@babel/core', 'npm:7.8.7'],
+                  [
+                    '@babel/register',
+                    'virtual:5f083906d4dafb50f6bc545e7b82209033176b2b6e0dac174a101405a9992af59e1e6562ca2dd58f5ace340c0bb1b0c9d6c0742a2a53222aa4e3ca327f03d2a8#npm:7.8.6',
+                  ],
                   ['@babel/runtime', 'npm:7.8.7'],
                   [
                     '@yarnpkg/pnpify',
@@ -2305,6 +2313,32 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
                     '@babel/plugin-transform-react-jsx-source',
                     'virtual:f8aa3e648e4e3893f207348c8bf89621cb2fb5b99078ed75c2b5112fe733219d655c001ef41f2493d88b133b2800b851a14468c670762864b1722c7cb9fc89d8#npm:7.8.3',
                   ],
+                ],
+                packagePeers: ['@babel/core'],
+                linkType: 'HARD',
+              },
+            ],
+          ],
+        ],
+        [
+          '@babel/register',
+          [
+            [
+              'virtual:5f083906d4dafb50f6bc545e7b82209033176b2b6e0dac174a101405a9992af59e1e6562ca2dd58f5ace340c0bb1b0c9d6c0742a2a53222aa4e3ca327f03d2a8#npm:7.8.6',
+              {
+                packageLocation:
+                  './.yarn/$$virtual/@babel-register-virtual-c34507ddf7/0/cache/@babel-register-npm-7.8.6-c651379263-2.zip/node_modules/@babel/register/',
+                packageDependencies: [
+                  [
+                    '@babel/register',
+                    'virtual:5f083906d4dafb50f6bc545e7b82209033176b2b6e0dac174a101405a9992af59e1e6562ca2dd58f5ace340c0bb1b0c9d6c0742a2a53222aa4e3ca327f03d2a8#npm:7.8.6',
+                  ],
+                  ['@babel/core', 'npm:7.8.7'],
+                  ['find-cache-dir', 'npm:2.1.0'],
+                  ['lodash', 'npm:4.17.15'],
+                  ['make-dir', 'npm:2.1.0'],
+                  ['pirates', 'npm:4.0.1'],
+                  ['source-map-support', 'npm:0.5.16'],
                 ],
                 packagePeers: ['@babel/core'],
                 linkType: 'HARD',
@@ -16648,6 +16682,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
                     'virtual:5f083906d4dafb50f6bc545e7b82209033176b2b6e0dac174a101405a9992af59e1e6562ca2dd58f5ace340c0bb1b0c9d6c0742a2a53222aa4e3ca327f03d2a8#npm:7.8.4',
                   ],
                   ['@babel/core', 'npm:7.8.7'],
+                  [
+                    '@babel/register',
+                    'virtual:5f083906d4dafb50f6bc545e7b82209033176b2b6e0dac174a101405a9992af59e1e6562ca2dd58f5ace340c0bb1b0c9d6c0742a2a53222aa4e3ca327f03d2a8#npm:7.8.6',
+                  ],
                   ['@babel/runtime', 'npm:7.8.7'],
                   [
                     '@yarnpkg/pnpify',

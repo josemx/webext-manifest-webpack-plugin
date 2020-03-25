@@ -1,15 +1,15 @@
 import path from 'path';
-import WebExtManifestWebpackPlugin from '../src';
+import WebExtManifestWebpackPlugin from '../../src';
 
 const config = {
-  entry: './tests/index.js',
+  mode: 'development',
+  entry: path.join(__dirname, './index.js'),
   output: {
-    path: path.join(__dirname, '../tests'),
+    path: path.join(__dirname, '../../tests'),
     filename: 'out.js',
   },
   plugins: [
     new WebExtManifestWebpackPlugin({
-      fromPKG: true,
       template: './tests/template.json',
     }),
   ],

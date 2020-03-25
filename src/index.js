@@ -1,63 +1,35 @@
-import path from 'path';
-import { readFileAsync } from './utils';
+import pluginDefaults from './defaults';
+import { PLUGIN_NAME, KEYMAP, MANIFEST_FILE } from './constants';
+import { readJSON, writeJSON, merge, extract, validateOptions } from './utils';
 
-const ERRTAG = '[webext-manifest-webpack-plugin]';
+const pluginCallback = (defaults, options) => (compilation, callback) => {
+  // validate options
+  validateOptions(options);
 
-function WebExtManifestWebpackPlugin(options = {}) {
-  // initialize options
-  this.options = {
-    template: options.template || {},
-    fromPKG: options.fromPKG || false,
-    target: options.target || '',
-    vendors: options.vendors || {},
-  };
+  // keys from packgage.json
+  const keys = readJSON('./package.json').then(pkg => extract(KEYMAP, pkg));
 
-  // initialize barebones manifest
-  this.defaultManifest = {
-    manifest_version: 2,
-    name: '',
-    version: '',
-    author: '',
-  };
-}
+  // keys from template
+  const template =
+    typeof defaults.options.template !== 'string'
+      ? defaults.options.template
+      : readJSON(defaults.options.template);
 
-WebExtManifestWebpackPlugin.prototype.apply = function apply(compiler) {
-  compiler.plugin('emit', (compilation, callback) => {
-    // keys from packgage.json
-    const defaultKeys = readFileAsync(path.resolve('./package.json'), 'utf8')
-      .then(contents => JSON.parse(contents))
-      .then(obj => ({
-        name: obj.name || '',
-        version: obj.version || '',
-        author: obj.author || '',
-        description: obj.description || '',
-        homepage_url: obj.homepage || '',
-        ...(obj.webext || {}),
-      }))
-      .catch(e => console.error(`${ERRTAG} :: ${e}`));
-
-    // keys from template
-    let { template } = this.options;
-    if (typeof template === 'string') {
-      // if the template is a string read the files contents and reassign
-      template = readFileAsync(path.resolve(template), 'utf8')
-        .then(contents => JSON.parse(contents))
-        .catch(e => console.error(`${ERRTAG} :: ${e}`));
-    }
-
-    Promise.all([this.defaultManifest, defaultKeys, template])
-      .then(manifestObjectArray => {
-        console.log('defaultKeys', defaultKeys);
-        console.log('template', template);
-        const manifestObject = manifestObjectArray.reduce(
-          (acc, cur) => ({ ...acc, ...cur }),
-          {}
-        );
-        console.log('manifestObject', manifestObject);
-        callback();
-      })
-      .catch(e => console.error(`${ERRTAG} :: ${e}`));
-  });
+  Promise.all([defaults.manifest, keys, template])
+    .then(manifestObjectArray => {
+      const manifestObject = merge(manifestObjectArray);
+      const { outputPath = compilation.options.output.path } = options;
+      const { filename = MANIFEST_FILE } = options;
+      return writeJSON(`${outputPath}/${filename}`, manifestObject);
+    })
+    .then(() => callback());
 };
+
+const pluginApply = (defaults, options, callback) => compiler =>
+  compiler.hooks.afterEmit.tapAsync(PLUGIN_NAME, callback(defaults, options));
+
+const WebExtManifestWebpackPlugin = (options = {}) => ({
+  apply: pluginApply(pluginDefaults, options, pluginCallback),
+});
 
 export default WebExtManifestWebpackPlugin;
