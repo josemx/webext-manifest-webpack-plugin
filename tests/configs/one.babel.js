@@ -17,6 +17,7 @@ const config = {
         author: 'Test Tester',
         from_template_test: 'obj',
       },
+      outputPath: __dirname,
     }),
   ],
 };
