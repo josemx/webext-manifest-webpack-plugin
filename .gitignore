@@ -58,8 +58,8 @@ typings/
 .env
 
 # other
-tests/out.js
 dist/
+tests/configs/out/
 .DS_Store
 test.json
 manifest.json

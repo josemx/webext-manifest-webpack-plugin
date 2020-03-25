@@ -1,8 +1,7 @@
 import path from 'path';
 import WebExtManifestWebpackPlugin from '../../src';
 
-console.log(__dirname);
-
+// template as path test
 const config = {
   mode: 'development',
   entry: path.join(__dirname, './index.js'),
@@ -12,12 +11,7 @@ const config = {
   },
   plugins: [
     new WebExtManifestWebpackPlugin({
-      template: {
-        manifest_version: 2,
-        author: 'Test Tester',
-        from_template_test: 'obj',
-      },
-      outputPath: __dirname,
+      template: './tests/configs/template.json',
     }),
   ],
 };

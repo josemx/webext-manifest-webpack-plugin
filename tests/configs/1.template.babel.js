@@ -1,16 +1,22 @@
 import path from 'path';
 import WebExtManifestWebpackPlugin from '../../src';
 
+// template as object test
+console.log(__dirname);
 const config = {
   mode: 'development',
   entry: path.join(__dirname, './index.js'),
   output: {
-    path: path.join(__dirname, '../../tests'),
+    path: path.join(__dirname, '/out'),
     filename: 'out.js',
   },
   plugins: [
     new WebExtManifestWebpackPlugin({
-      template: './tests/template.json',
+      template: {
+        manifest_version: 2,
+        author: 'Test Tester',
+        from_template_test: 'obj',
+      },
     }),
   ],
 };
