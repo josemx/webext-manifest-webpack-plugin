@@ -32,5 +32,9 @@
       "type": "string"
     }
   },
+  "dependencies": {
+    "target": ["vendors"],
+    "vendors": ["target"]
+  },
   "additionalProperties": false
 }

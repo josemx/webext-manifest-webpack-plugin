@@ -15,7 +15,16 @@ const pluginCallback = (defaults, options) => (compilation, callback) => {
       ? defaults.options.template
       : readJSON(defaults.options.template);
 
-  Promise.all([defaults.manifest, keys, template])
+  const vendorsDefined = options.target || options.vendors;
+  const getVendorKeys = vendorsOption =>
+    typeof vendorsOption !== 'string'
+      ? options.vendors[options.target]
+      : readJSON(options.vendors).then(
+          vendorsObj => vendorsObj[options.target]
+        );
+  const vendorKeys = vendorsDefined ? getVendorKeys(options.vendors) : [];
+
+  Promise.all([defaults.manifest, keys, template, vendorKeys])
     .then(manifestObjectArray => {
       const manifestObject = merge(manifestObjectArray);
       const { outputPath = compilation.options.output.path } = options;
