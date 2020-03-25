@@ -2,7 +2,6 @@ import path from 'path';
 import WebExtManifestWebpackPlugin from '../../src';
 
 // template as object test
-console.log(__dirname);
 const config = {
   mode: 'development',
   entry: path.join(__dirname, './index.js'),
