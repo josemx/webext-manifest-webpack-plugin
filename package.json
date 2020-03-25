@@ -19,7 +19,8 @@
     "lint": "eslint '{src,tests}/**/*.js'",
     "test": "jest",
     "test:config:1": "webpack --config tests/configs/1.template.babel.js",
-    "test:config:2": "webpack --config tests/configs/2.template.babel.js"
+    "test:config:2": "webpack --config tests/configs/2.template.babel.js",
+    "test:config:3": "webpack --config tests/configs/3.vendor.babel.js"
   },
   "dependencies": {
     "schema-utils": "^2.6.5"
