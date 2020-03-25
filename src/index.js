@@ -18,8 +18,8 @@ const pluginCallback = (defaults, options) => (compilation, callback) => {
   Promise.all([defaults.manifest, keys, template])
     .then(manifestObjectArray => {
       const manifestObject = merge(manifestObjectArray);
-      console.log(manifestObject);
-      return writeJSON(`${__dirname}/../test.json`, manifestObject);
+      const outputPath = options.output || compilation.options.output.path;
+      return writeJSON(`${outputPath}/test.json`, manifestObject);
     })
     .then(() => callback());
 };
