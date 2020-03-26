@@ -1,7 +1,7 @@
 import path from 'path';
 import WebExtManifestWebpackPlugin from '../../src';
 
-// firefox vendor test
+// chrome vendor test
 const config = {
   mode: 'development',
   entry: path.join(__dirname, './index.js'),
@@ -11,7 +11,7 @@ const config = {
   },
   plugins: [
     new WebExtManifestWebpackPlugin({
-      target: 'firefox',
+      target: 'chrome',
       vendors: {
         firefox: {
           sidebar_action: {},
