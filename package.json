@@ -21,7 +21,8 @@
     "test:config:1": "webpack --config tests/configs/1.template.babel.js",
     "test:config:2": "webpack --config tests/configs/2.template.babel.js",
     "test:config:3": "webpack --config tests/configs/3.vendor.babel.js",
-    "test:config:4": "webpack --config tests/configs/4.vendor.babel.js"
+    "test:config:4": "webpack --config tests/configs/4.vendor.babel.js",
+    "test:config:5": "webpack --config tests/configs/5.all.babel.js"
   },
   "dependencies": {
     "schema-utils": "^2.6.5"
