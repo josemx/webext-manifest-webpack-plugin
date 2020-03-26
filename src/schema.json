@@ -12,7 +12,8 @@
       ]
     },
     "target": {
-      "type": "string"
+      "type": "string",
+      "enum": ["firefox", "chrome"]
     },
     "vendors": {
       "oneOf": [
@@ -30,6 +31,10 @@
     "filename": {
       "type": "string"
     }
+  },
+  "dependencies": {
+    "target": ["vendors"],
+    "vendors": ["target"]
   },
   "additionalProperties": false
 }

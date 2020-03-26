@@ -1,13 +1,12 @@
 import path from 'path';
 import WebExtManifestWebpackPlugin from '../../src';
 
-console.log(__dirname);
-
+// template as object test
 const config = {
   mode: 'development',
   entry: path.join(__dirname, './index.js'),
   output: {
-    path: path.join(__dirname, '../../tests'),
+    path: path.join(__dirname, '/out'),
     filename: 'out.js',
   },
   plugins: [
@@ -17,7 +16,6 @@ const config = {
         author: 'Test Tester',
         from_template_test: 'obj',
       },
-      outputPath: __dirname,
     }),
   ],
 };

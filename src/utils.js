@@ -1,4 +1,4 @@
-import { resolve } from 'path';
+import { resolve, dirname } from 'path';
 import validate from 'schema-utils';
 import { promises as fsPromises } from 'fs';
 
@@ -17,7 +17,10 @@ export const readJSON = path =>
 
 export const writeJSON = (path, obj) =>
   fsPromises
-    .writeFile(resolve(path), JSON.stringify(obj, null, 2), 'utf8')
+    .mkdir(dirname(path), { recursive: true })
+    .then(() =>
+      fsPromises.writeFile(resolve(path), JSON.stringify(obj, null, 2), 'utf8')
+    )
     .catch(throwPluginError);
 
 export const merge = objArray =>

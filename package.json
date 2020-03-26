@@ -18,8 +18,10 @@
     "build": "babel src -d dist",
     "lint": "eslint '{src,tests}/**/*.js'",
     "test": "jest",
-    "test:config:one": "webpack --config tests/configs/one.babel.js",
-    "test:config:two": "webpack --config tests/configs/two.babel.js"
+    "test:config:1": "webpack --config tests/configs/1.template.babel.js",
+    "test:config:2": "webpack --config tests/configs/2.template.babel.js",
+    "test:config:3": "webpack --config tests/configs/3.vendor.babel.js",
+    "test:config:4": "webpack --config tests/configs/4.vendor.babel.js"
   },
   "dependencies": {
     "schema-utils": "^2.6.5"
