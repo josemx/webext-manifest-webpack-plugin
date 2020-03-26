@@ -1,7 +1,7 @@
 import validate from 'schema-utils';
 
 import schema from '../src/schema.json';
-import config from '../src/option.config';
+import { SCHEMA_CONFIG as config } from '../src/constants';
 
 describe('options schema', () => {
   it('should validate with empyt options', () => {
@@ -34,37 +34,49 @@ describe('options schema', () => {
     }).not.toThrow();
   });
 
-  it('should validate with target option', () => {
+  it('should invalidate with only target option', () => {
     const options = {
       target: 'chrome',
     };
     expect(() => {
       validate(schema, options, config);
-    }).not.toThrow();
+    }).toThrow();
   });
 
-  it('should validate with string vendors option', () => {
+  it('should invalidate with only vendors option', () => {
     const options = {
       vendors: './path/to/json',
     };
     expect(() => {
       validate(schema, options, config);
-    }).not.toThrow();
+    }).toThrow();
   });
 
-  it('should validate with object template option', () => {
+  it('should validate with target and vendor option', () => {
     const options = {
-      template: { key: 'value' },
+      target: 'firefox',
+      vendors: { firefox: {} },
     };
     expect(() => {
       validate(schema, options, config);
     }).not.toThrow();
+  });
+
+  it('should invalidate with unknown target option', () => {
+    const options = {
+      target: 'safari',
+      vendors: { safari: {} },
+    };
+    expect(() => {
+      validate(schema, options, config);
+    }).toThrow();
   });
 
   it('should validate with partial options', () => {
     const options = {
       template: './path/to/json',
       target: 'firefox',
+      vendors: './path/to/vendors',
     };
     expect(() => {
       validate(schema, options, config);

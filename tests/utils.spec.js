@@ -1,5 +1,5 @@
 import { readJSON, merge, extract } from '../src/utils';
-import { keyMap } from '../src/defaults';
+import { KEYMAP } from '../src/constants';
 
 const mockPackage = {
   name: 'myExt',
@@ -36,7 +36,7 @@ describe('merge function', () => {
 
 describe('extract function', () => {
   it('should return an object with empty strings', () => {
-    const obj = extract(keyMap, {});
+    const obj = extract(KEYMAP, {});
     const expected = {
       name: '',
       version: '',
@@ -49,7 +49,7 @@ describe('extract function', () => {
   });
 
   it('should match mock package values', () => {
-    const extraced = extract(keyMap, mockPackage);
+    const extraced = extract(KEYMAP, mockPackage);
     expect(Object.values(mockPackage).sort()).toEqual(
       Object.values(extraced).sort()
     );
@@ -70,7 +70,7 @@ describe('extract function', () => {
       ...webext,
     };
 
-    const extracted = extract(keyMap, withWebExtKey);
+    const extracted = extract(KEYMAP, withWebExtKey);
     expect(Object.values(expected).sort()).toEqual(
       Object.values(extracted).sort()
     );
