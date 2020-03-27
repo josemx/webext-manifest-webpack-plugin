@@ -11,8 +11,8 @@ const pluginCallback = (defaults, options) => (compilation, callback) => {
 
   // keys from template
   const template =
-    typeof defaults.options.template !== 'string'
-      ? defaults.options.template
+    typeof options.template !== 'string'
+      ? options.template || {}
       : readJSON(defaults.options.template);
 
   const vendorsDefined = options.target || options.vendors;
@@ -22,7 +22,7 @@ const pluginCallback = (defaults, options) => (compilation, callback) => {
       : readJSON(options.vendors).then(
           vendorsObj => vendorsObj[options.target]
         );
-  const vendorKeys = vendorsDefined ? getVendorKeys(options.vendors) : [];
+  const vendorKeys = vendorsDefined ? getVendorKeys(options.vendors) : {};
 
   Promise.all([defaults.manifest, keys, template, vendorKeys])
     .then(manifestObjectArray => {
