@@ -12,7 +12,7 @@ const pluginCallback = (defaults, options) => (compilation, callback) => {
   // keys from template
   const template =
     typeof options.template !== 'string'
-      ? options.template
+      ? options.template || {}
       : readJSON(defaults.options.template);
 
   const vendorsDefined = options.target || options.vendors;
