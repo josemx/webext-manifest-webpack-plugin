@@ -24,6 +24,9 @@
     "test:config:4": "webpack --config tests/configs/4.vendor.babel.js",
     "test:config:5": "webpack --config tests/configs/5.all.babel.js"
   },
+  "peerDependencies": {
+    "webpack": "^4.0.0"
+  },
   "dependencies": {
     "schema-utils": "^2.6.5"
   },
