@@ -76,6 +76,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         ['husky', 'npm:4.2.3'],
         ['jest', 'npm:25.1.0'],
         ['lint-staged', 'npm:10.0.8'],
+        ['pnp-webpack-plugin', 'npm:1.6.4'],
         ['prettier', 'npm:1.19.1'],
         ['schema-utils', 'npm:2.6.5'],
         ['webpack', 'npm:4.42.0'],
@@ -137,6 +138,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
                   ['husky', 'npm:4.2.3'],
                   ['jest', 'npm:25.1.0'],
                   ['lint-staged', 'npm:10.0.8'],
+                  ['pnp-webpack-plugin', 'npm:1.6.4'],
                   ['prettier', 'npm:1.19.1'],
                   ['schema-utils', 'npm:2.6.5'],
                   ['webpack', 'npm:4.42.0'],
@@ -13189,6 +13191,26 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           ],
         ],
         [
+          'pnp-webpack-plugin',
+          [
+            [
+              'npm:1.6.4',
+              {
+                packageLocation:
+                  './.yarn/cache/pnp-webpack-plugin-npm-1.6.4-c497046afc-2.zip/node_modules/pnp-webpack-plugin/',
+                packageDependencies: [
+                  ['pnp-webpack-plugin', 'npm:1.6.4'],
+                  [
+                    'ts-pnp',
+                    'virtual:c497046afcbefb679e3fe12575088ec12205b913a36c3d158b27e7cd646d448426540ab27ba98e54ddb75b1ed97de7e3ce5dc0158c9ba4e76ce942c87e5d02d8#npm:1.2.0',
+                  ],
+                ],
+                linkType: 'HARD',
+              },
+            ],
+          ],
+        ],
+        [
           'posix-character-classes',
           [
             [
@@ -16102,6 +16124,27 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           ],
         ],
         [
+          'ts-pnp',
+          [
+            [
+              'virtual:c497046afcbefb679e3fe12575088ec12205b913a36c3d158b27e7cd646d448426540ab27ba98e54ddb75b1ed97de7e3ce5dc0158c9ba4e76ce942c87e5d02d8#npm:1.2.0',
+              {
+                packageLocation:
+                  './.yarn/$$virtual/ts-pnp-virtual-abd2827f29/0/cache/ts-pnp-npm-1.2.0-43620de7df-2.zip/node_modules/ts-pnp/',
+                packageDependencies: [
+                  [
+                    'ts-pnp',
+                    'virtual:c497046afcbefb679e3fe12575088ec12205b913a36c3d158b27e7cd646d448426540ab27ba98e54ddb75b1ed97de7e3ce5dc0158c9ba4e76ce942c87e5d02d8#npm:1.2.0',
+                  ],
+                  ['typescript', null],
+                ],
+                packagePeers: ['typescript'],
+                linkType: 'HARD',
+              },
+            ],
+          ],
+        ],
+        [
           'tslib',
           [
             [
@@ -16777,6 +16820,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
                   ['husky', 'npm:4.2.3'],
                   ['jest', 'npm:25.1.0'],
                   ['lint-staged', 'npm:10.0.8'],
+                  ['pnp-webpack-plugin', 'npm:1.6.4'],
                   ['prettier', 'npm:1.19.1'],
                   ['schema-utils', 'npm:2.6.5'],
                   ['webpack', 'npm:4.42.0'],

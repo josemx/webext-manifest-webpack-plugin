@@ -47,6 +47,7 @@
     "husky": ">=4",
     "jest": "^25.1.0",
     "lint-staged": ">=10",
+    "pnp-webpack-plugin": "^1.6.4",
     "prettier": "^1.19.1",
     "webpack": "^4.42.0",
     "webpack-cli": "^3.3.11"
