@@ -48,6 +48,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           'virtual:5f083906d4dafb50f6bc545e7b82209033176b2b6e0dac174a101405a9992af59e1e6562ca2dd58f5ace340c0bb1b0c9d6c0742a2a53222aa4e3ca327f03d2a8#npm:2.0.0-rc.19',
         ],
         [
+          'babel-loader',
+          'virtual:5f083906d4dafb50f6bc545e7b82209033176b2b6e0dac174a101405a9992af59e1e6562ca2dd58f5ace340c0bb1b0c9d6c0742a2a53222aa4e3ca327f03d2a8#npm:8.1.0',
+        ],
+        [
           'babel-preset-airbnb',
           'virtual:5f083906d4dafb50f6bc545e7b82209033176b2b6e0dac174a101405a9992af59e1e6562ca2dd58f5ace340c0bb1b0c9d6c0742a2a53222aa4e3ca327f03d2a8#npm:4.4.0',
         ],
@@ -105,6 +109,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
                     'virtual:5f083906d4dafb50f6bc545e7b82209033176b2b6e0dac174a101405a9992af59e1e6562ca2dd58f5ace340c0bb1b0c9d6c0742a2a53222aa4e3ca327f03d2a8#npm:2.0.0-rc.19',
                   ],
                   [
+                    'babel-loader',
+                    'virtual:5f083906d4dafb50f6bc545e7b82209033176b2b6e0dac174a101405a9992af59e1e6562ca2dd58f5ace340c0bb1b0c9d6c0742a2a53222aa4e3ca327f03d2a8#npm:8.1.0',
+                  ],
+                  [
                     'babel-preset-airbnb',
                     'virtual:5f083906d4dafb50f6bc545e7b82209033176b2b6e0dac174a101405a9992af59e1e6562ca2dd58f5ace340c0bb1b0c9d6c0742a2a53222aa4e3ca327f03d2a8#npm:4.4.0',
                   ],
@@ -137,6 +145,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
                     'virtual:5f083906d4dafb50f6bc545e7b82209033176b2b6e0dac174a101405a9992af59e1e6562ca2dd58f5ace340c0bb1b0c9d6c0742a2a53222aa4e3ca327f03d2a8#npm:3.3.11',
                   ],
                 ],
+                packagePeers: ['webpack'],
                 linkType: 'SOFT',
               },
             ],
@@ -4146,6 +4155,33 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
                   ['slash', 'npm:3.0.0'],
                 ],
                 packagePeers: ['@babel/core'],
+                linkType: 'HARD',
+              },
+            ],
+          ],
+        ],
+        [
+          'babel-loader',
+          [
+            [
+              'virtual:5f083906d4dafb50f6bc545e7b82209033176b2b6e0dac174a101405a9992af59e1e6562ca2dd58f5ace340c0bb1b0c9d6c0742a2a53222aa4e3ca327f03d2a8#npm:8.1.0',
+              {
+                packageLocation:
+                  './.yarn/$$virtual/babel-loader-virtual-0b443ae857/0/cache/babel-loader-npm-8.1.0-e8c38740ba-2.zip/node_modules/babel-loader/',
+                packageDependencies: [
+                  [
+                    'babel-loader',
+                    'virtual:5f083906d4dafb50f6bc545e7b82209033176b2b6e0dac174a101405a9992af59e1e6562ca2dd58f5ace340c0bb1b0c9d6c0742a2a53222aa4e3ca327f03d2a8#npm:8.1.0',
+                  ],
+                  ['@babel/core', 'npm:7.8.7'],
+                  ['find-cache-dir', 'npm:2.1.0'],
+                  ['loader-utils', 'npm:1.4.0'],
+                  ['mkdirp', 'npm:0.5.4'],
+                  ['pify', 'npm:4.0.1'],
+                  ['schema-utils', 'npm:2.6.5'],
+                  ['webpack', 'npm:4.42.0'],
+                ],
+                packagePeers: ['@babel/core', 'webpack'],
                 linkType: 'HARD',
               },
             ],
@@ -11605,6 +11641,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
                 linkType: 'HARD',
               },
             ],
+            [
+              'npm:1.2.5',
+              {
+                packageLocation:
+                  './.yarn/cache/minimist-npm-1.2.5-ced0e1f617-2.zip/node_modules/minimist/',
+                packageDependencies: [['minimist', 'npm:1.2.5']],
+                linkType: 'HARD',
+              },
+            ],
           ],
         ],
         [
@@ -11697,6 +11742,18 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
                 packageDependencies: [
                   ['mkdirp', 'npm:0.5.1'],
                   ['minimist', 'npm:0.0.8'],
+                ],
+                linkType: 'HARD',
+              },
+            ],
+            [
+              'npm:0.5.4',
+              {
+                packageLocation:
+                  './.yarn/cache/mkdirp-npm-0.5.4-544383b09d-2.zip/node_modules/mkdirp/',
+                packageDependencies: [
+                  ['mkdirp', 'npm:0.5.4'],
+                  ['minimist', 'npm:1.2.5'],
                 ],
                 linkType: 'HARD',
               },
@@ -16692,6 +16749,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
                     'virtual:5f083906d4dafb50f6bc545e7b82209033176b2b6e0dac174a101405a9992af59e1e6562ca2dd58f5ace340c0bb1b0c9d6c0742a2a53222aa4e3ca327f03d2a8#npm:2.0.0-rc.19',
                   ],
                   [
+                    'babel-loader',
+                    'virtual:5f083906d4dafb50f6bc545e7b82209033176b2b6e0dac174a101405a9992af59e1e6562ca2dd58f5ace340c0bb1b0c9d6c0742a2a53222aa4e3ca327f03d2a8#npm:8.1.0',
+                  ],
+                  [
                     'babel-preset-airbnb',
                     'virtual:5f083906d4dafb50f6bc545e7b82209033176b2b6e0dac174a101405a9992af59e1e6562ca2dd58f5ace340c0bb1b0c9d6c0742a2a53222aa4e3ca327f03d2a8#npm:4.4.0',
                   ],
@@ -16724,6 +16785,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
                     'virtual:5f083906d4dafb50f6bc545e7b82209033176b2b6e0dac174a101405a9992af59e1e6562ca2dd58f5ace340c0bb1b0c9d6c0742a2a53222aa4e3ca327f03d2a8#npm:3.3.11',
                   ],
                 ],
+                packagePeers: ['webpack'],
                 linkType: 'SOFT',
               },
             ],
