@@ -1,0 +1,40 @@
+{
+  "type": "object",
+  "properties": {
+    "template": {
+      "oneOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "object"
+        }
+      ]
+    },
+    "target": {
+      "type": "string",
+      "enum": ["firefox", "chrome"]
+    },
+    "vendors": {
+      "oneOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "object"
+        }
+      ]
+    },
+    "outputPath": {
+      "type": "string"
+    },
+    "filename": {
+      "type": "string"
+    }
+  },
+  "dependencies": {
+    "target": ["vendors"],
+    "vendors": ["target"]
+  },
+  "additionalProperties": false
+}

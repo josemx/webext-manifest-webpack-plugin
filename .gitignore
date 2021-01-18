@@ -57,8 +57,15 @@ typings/
 # dotenv environment variables file
 .env
 
-# more yarn
+# other
+dist/
+tests/configs/out/
+.DS_Store
+test.json
+manifest.json
+
+# yarn2
 .yarn/*
+!.yarn/cache
 !.yarn/releases
 !.yarn/plugins
-.pnp.*
